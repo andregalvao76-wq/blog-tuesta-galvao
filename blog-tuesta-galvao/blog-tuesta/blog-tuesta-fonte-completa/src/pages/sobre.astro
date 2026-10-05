@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+const breadcrumbs = [
+  { name: 'Início', path: '/' },
+  { name: 'Sobre', path: '/sobre/' },
+];
+---
+<BaseLayout
+  title="Sobre a Tuesta & Galvão — quem escreve estes guias"
+  description="A imobiliária por trás do blog: Tuesta & Galvão Corretores Associados, CRECI J07217, especializada no mercado de Curitiba desde 2017."
+  path="/sobre/"
+  breadcrumbs={breadcrumbs}
+>
+  <article class="sobre wrap">
+    <p class="eyebrow">Sobre</p>
+    <h1>Quem escreve estes guias</h1>
+
+    <p class="lead">
+      Este blog é mantido pela <strong>Tuesta &amp; Galvão Corretores Associados</strong>,
+      imobiliária de Curitiba especializada em locação, avaliação e intermediação de imóveis.
+      Cada guia aqui vem da prática: do que a gente negocia, administra e avalia na cidade
+      todos os dias — não de teoria copiada da internet.
+    </p>
+
+    <h2>Experiência de mercado</h2>
+    <p>
+      Atuamos no mercado imobiliário de Curitiba desde 2009, e a Tuesta &amp; Galvão foi
+      fundada em 2017 como uma sociedade de corretores parceiros. Nossa rotina é avaliar
+      imóveis, administrar contratos de locação e intermediar compra e venda — o que nos dá
+      base real para falar de preço, de bairro e das regras da locação.
+    </p>
+
+    <h2>Por que confiar no conteúdo</h2>
+    <ul class="checks">
+      <li>Guias assinados por corretores com registro ativo — <strong>{SITE.creci}</strong>.</li>
+      <li>Avaliações baseadas em imóveis comparáveis e índices do mercado de Curitiba.</li>
+      <li>Conteúdo jurídico revisado com base na Lei do Inquilinato e no Código Civil.</li>
+      <li>Nada de promessa de vendedor: cada artigo mostra também o que você precisa avaliar com cuidado.</li>
+    </ul>
+
+    <h2>Fale com a gente</h2>
+    <div class="contato">
+      <div>
+        <span class="rot">Telefone / WhatsApp</span>
+        <a href={`tel:${SITE.telefone}`}>{SITE.telefoneExibicao}</a>
+      </div>
+      <div>
+        <span class="rot">E-mail</span>
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </div>
+      <div>
+        <span class="rot">Escritório</span>
+        <span>{SITE.endereco.rua} — {SITE.endereco.bairro}, {SITE.endereco.cidade}/{SITE.endereco.uf}</span>
+      </div>
+    </div>
+
+    <div class="sobre-actions">
+      <a class="btn btn-primary" href={SITE.lps.avalie} target="_blank" rel="noopener">Avaliar meu imóvel →</a>
+      <a class="btn btn-ghost" href={SITE.siteUrl} target="_blank" rel="noopener">Buscar imóveis</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .sobre { max-width: var(--readw); padding-block: 36px 20px; }
+  .sobre h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 600; margin: 12px 0 0; }
+  .sobre .lead { font-size: 19px; line-height: 1.7; color: var(--fg); margin-top: 22px; }
+  .sobre h2 { font-size: 24px; font-weight: 600; margin: 38px 0 12px; }
+  .sobre p { font-size: 17px; line-height: 1.75; color: var(--muted); }
+  .sobre .lead strong, .sobre p strong { color: var(--fg); }
+  .checks { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 12px; }
+  .checks li { position: relative; padding-left: 30px; font-size: 16.5px; line-height: 1.6; }
+  .checks li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent);
+    font-weight: 700; }
+  .contato { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px;
+    margin-top: 10px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px; }
+  .contato .rot { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+  .contato a, .contato span:not(.rot) { font-size: 15.5px; color: var(--fg); }
+  .sobre-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+</style>

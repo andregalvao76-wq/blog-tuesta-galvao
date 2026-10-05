@@ -1,0 +1,29 @@
+---
+import { getPilar } from '../data/pilares';
+import Motif from './Motif.astro';
+interface Props {
+  url: string;
+  title: string;
+  description: string;
+  pilar: string;
+  pubDate: Date;
+  image?: string;
+  imageAlt?: string;
+}
+const { url, title, description, pilar, pubDate, image, imageAlt } = Astro.props;
+const p = getPilar(pilar);
+const data = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).format(pubDate);
+---
+<article class="card card--art">
+  <a href={url} class="card-cover" tabindex="-1" aria-hidden="true">
+    {image
+      ? <img src={image} alt={imageAlt ?? ''} loading="lazy" width="400" height="118" />
+      : <Motif pilar={pilar} variant="card" />}
+  </a>
+  <div class="card-body">
+    {p && <span class="tag">{p.nav}</span>}
+    <h3><a href={url}>{title}</a></h3>
+    <p>{description}</p>
+    <div class="meta"><time datetime={pubDate.toISOString()}>{data}</time></div>
+  </div>
+</article>

@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Cta from '../../components/Cta.astro';
+import Motif from '../../components/Motif.astro';
+import { PILARES, getPilar, PILAR_IMG } from '../../data/pilares';
+
+export async function getStaticPaths() {
+  return PILARES.map((p) => ({ params: { pilar: p.slug } }));
+}
+
+const { pilar: slug } = Astro.params;
+const pilar = getPilar(slug!)!;
+
+const artigos = (await getCollection('blog', ({ data }) => !data.draft && data.pilar === slug))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const breadcrumbs = [
+  { name: 'Início', path: '/' },
+  { name: pilar.nav, path: `/guias/${pilar.slug}/` },
+];
+---
+<BaseLayout
+  title={pilar.tituloSeo}
+  description={pilar.descricao}
+  path={`/guias/${pilar.slug}/`}
+  breadcrumbs={breadcrumbs}
+>
+  <nav class="crumbs wrap" aria-label="Trilha">
+    <a href="/">Início</a> <span>/</span> <span>{pilar.nav}</span>
+  </nav>
+
+  <div class="wrap"><div class="pilar-cover">
+    {PILAR_IMG[pilar.slug]
+      ? <img src={PILAR_IMG[pilar.slug].src.replace('w=1000&h=420','w=1200&h=360')} alt={PILAR_IMG[pilar.slug].alt} width="1200" height="360" />
+      : <Motif pilar={pilar.slug} variant="cover" />}
+  </div></div>
+
+  <header class="pilar-hero wrap">
+    <p class="eyebrow">Guia completo</p>
+    <h1>{pilar.titulo}</h1>
+    <div class="pilar-intro">
+      {pilar.intro.map((par) => <p>{par}</p>)}
+    </div>
+  </header>
+
+  <section class="wrap" style="padding-block:20px 10px">
+    {artigos.length > 0 ? (
+      <>
+        <div class="section-head"><h2>Artigos deste guia</h2></div>
+        <div class="grid-cards">
+          {artigos.map((post) => (
+            <ArticleCard
+              url={`/blog/${post.slug}/`}
+              title={post.data.title}
+              description={post.data.description}
+              pilar={post.data.pilar}
+              pubDate={post.data.pubDate}
+              image={post.data.image}
+              imageAlt={post.data.imageAlt}
+            />
+          ))}
+        </div>
+      </>
+    ) : (
+      <p style="color:var(--muted)">Novos artigos deste guia chegam em breve.</p>
+    )}
+  </section>
+
+  <section class="wrap" style="padding-block:30px 10px">
+    <Cta pilar={pilar} />
+  </section>
+
+  <section class="wrap outros" style="padding-block:30px 50px">
+    <h2>Outros guias</h2>
+    <ul>
+      {PILARES.filter((p) => p.slug !== pilar.slug).map((p) => (
+        <li><a href={`/guias/${p.slug}/`}>{p.titulo} →</a></li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .pilar-cover { margin-top: 18px; border-radius: 16px; overflow: hidden; }
+  .pilar-cover :global(.motif) { border-radius: 16px; }
+  .pilar-cover img { width: 100%; height: 300px; object-fit: cover; display: block; border-radius: 16px; }
+  .crumbs { padding-block: 18px 0; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .crumbs a { color: var(--muted); } .crumbs span { margin-inline: 4px; }
+  .pilar-hero { padding-block: 18px 6px; }
+  .pilar-hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 600; max-width: 20ch; margin-top: 12px; }
+  .pilar-intro { margin-top: 20px; max-width: var(--readw); display: flex; flex-direction: column; gap: 14px; }
+  .pilar-intro p { font-size: 17px; line-height: 1.7; }
+  .outros h2 { font-size: 20px; margin-bottom: 14px; }
+  .outros ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .outros a { font-family: var(--serif); font-size: 17px; color: var(--fg); }
+  .outros a:hover { color: var(--accent-ink); }
+</style>
