@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import { SITE } from '../data/site';
 
 interface Breadcrumb { name: string; path: string; }
@@ -16,14 +17,15 @@ interface Props {
   author?: string;
   breadcrumbs?: Breadcrumb[];
   faq?: Faq[];
+  image?: string;
 }
 const {
   title, description, path, type = 'website',
-  pubDate, updatedDate, author, breadcrumbs = [], faq = [],
+  pubDate, updatedDate, author, breadcrumbs = [], faq = [], image,
 } = Astro.props;
 
 const canonical = new URL(path, SITE.url).href;
-const ogImage = new URL('/og-default.png', SITE.url).href;
+const ogImage = image ? image : new URL('/og-default.png', SITE.url).href;
 
 // ---- JSON-LD ----
 const org = {
@@ -119,5 +121,75 @@ const jsonld = { '@context': 'https://schema.org', '@graph': graph };
   <Header />
   <main id="conteudo"><slot /></main>
   <Footer />
+  <FloatingWhatsApp />
+
+  <!-- ===== Consentimento de cookies + Medição (GA4 + Meta Pixel) ===== -->
+  <!-- Carrega GA4 e o Pixel do Meta SOMENTE após o visitante aceitar (LGPD). -->
+  <div id="tgc" hidden aria-live="polite">
+    <p class="tgc-txt">Usamos cookies para medir e melhorar sua experiência no blog.
+      <a href="https://politica.tuestagalvao.com.br" target="_blank" rel="noopener">Política de privacidade</a>.</p>
+    <div class="tgc-actions">
+      <button type="button" id="tgc-no">Recusar</button>
+      <button type="button" id="tgc-yes">Aceitar</button>
+    </div>
+  </div>
+  <style>
+    #tgc{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:600px;margin-inline:auto;
+      background:#0f3b3e;color:#f4f1ea;border:1px solid #c9a15a;border-radius:14px;padding:16px 18px;
+      box-shadow:0 12px 34px rgba(0,0,0,.28);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;line-height:1.55}
+    #tgc[hidden]{display:none}
+    #tgc .tgc-txt{margin:0}
+    #tgc a{color:#c9a15a;text-decoration:underline}
+    #tgc .tgc-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
+    #tgc button{cursor:pointer;border-radius:9px;padding:8px 18px;font-weight:600;font-size:14px;
+      font-family:inherit;border:1px solid #c9a15a;transition:opacity .15s}
+    #tgc button:hover{opacity:.88}
+    #tgc #tgc-no{background:transparent;color:#f4f1ea}
+    #tgc #tgc-yes{background:#c9a15a;color:#0f3b3e}
+  </style>
+  <script is:inline>
+    (function () {
+      var KEY = 'tg_consent_v1';
+      var GA = 'G-YD1VSBZE4W';
+      var PX = '1076885594957207';
+      function loadGA() {
+        var s = document.createElement('script');
+        s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag; gtag('js', new Date()); gtag('config', GA);
+      }
+      function loadPixel() {
+        !function (f, b, e, v, n, t, s) {
+          if (f.fbq) return; n = f.fbq = function () { n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+          if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+          n.queue = []; t = b.createElement(e); t.async = !0; t.src = v;
+          s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        window.fbq('init', PX); window.fbq('track', 'PageView');
+      }
+      function enable() { loadGA(); loadPixel(); }
+      try {
+        var c = localStorage.getItem(KEY);
+        if (c === 'granted') { enable(); return; }
+        if (c === 'denied') { return; }
+      } catch (e) {}
+      var el = document.getElementById('tgc');
+      if (!el) return;
+      el.hidden = false;
+      var yes = document.getElementById('tgc-yes');
+      var no = document.getElementById('tgc-no');
+      yes && yes.addEventListener('click', function () {
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        el.hidden = true; enable();
+      });
+      no && no.addEventListener('click', function () {
+        try { localStorage.setItem(KEY, 'denied'); } catch (e) {}
+        el.hidden = true;
+      });
+    })();
+  </script>
 </body>
 </html>
