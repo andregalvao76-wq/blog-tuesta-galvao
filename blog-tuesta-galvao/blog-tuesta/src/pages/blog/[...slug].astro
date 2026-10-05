@@ -1,0 +1,132 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Cta from '../../components/Cta.astro';
+import { getPilar } from '../../data/pilares';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const pilar = getPilar(post.data.pilar)!;
+
+const relacionados = (await getCollection('blog', ({ data }) =>
+  !data.draft && data.pilar === post.data.pilar))
+  .filter((p) => p.slug !== post.slug)
+  .slice(0, 3);
+
+const dataPub = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }).format(post.data.pubDate);
+const breadcrumbs = [
+  { name: 'Início', path: '/' },
+  { name: pilar.nav, path: `/guias/${pilar.slug}/` },
+  { name: post.data.title, path: `/blog/${post.slug}/` },
+];
+---
+<BaseLayout
+  title={`${post.data.title} | Tuesta & Galvão`}
+  description={post.data.description}
+  path={`/blog/${post.slug}/`}
+  type="article"
+  pubDate={post.data.pubDate}
+  updatedDate={post.data.updatedDate}
+  author={post.data.author}
+  breadcrumbs={breadcrumbs}
+  faq={post.data.faq}
+>
+  <article class="post">
+    <nav class="crumbs wrap" aria-label="Trilha">
+      <a href="/">Início</a> <span>/</span>
+      <a href={`/guias/${pilar.slug}/`}>{pilar.nav}</a> <span>/</span>
+      <span>Artigo</span>
+    </nav>
+
+    <header class="post-head wrap">
+      <a class="post-pilar" href={`/guias/${pilar.slug}/`}>{pilar.nav}</a>
+      <h1>{post.data.title}</h1>
+      <p class="post-sub">{post.data.description}</p>
+      <div class="post-meta">
+        <span>{post.data.author}</span><span aria-hidden="true">·</span>
+        <time datetime={post.data.pubDate.toISOString()}>{dataPub}</time>
+      </div>
+    </header>
+
+    <div class="prose wrap">
+      <Content />
+    </div>
+
+    {post.data.faq && post.data.faq.length > 0 && (
+      <section class="faq wrap">
+        <h2>Perguntas frequentes</h2>
+        {post.data.faq.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </section>
+    )}
+
+    <section class="wrap" style="padding-block:34px 0">
+      <Cta pilar={pilar} />
+    </section>
+
+    {relacionados.length > 0 && (
+      <section class="wrap relacionados">
+        <h2>Continue no guia de {pilar.nav.toLowerCase()}</h2>
+        <ul>
+          {relacionados.map((p) => (
+            <li><a href={`/blog/${p.slug}/`}>{p.data.title} →</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .crumbs { padding-block: 18px 0; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .crumbs a { color: var(--muted); } .crumbs span { margin-inline: 4px; }
+  .post-head { padding-block: 16px 8px; max-width: calc(var(--readw) + 44px); }
+  .post-pilar { font-family: var(--mono); font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent-ink); }
+  .post-head h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 600; margin: 12px 0 14px; }
+  .post-sub { font-size: 19px; line-height: 1.55; color: var(--muted); }
+  .post-meta { margin-top: 18px; font-family: var(--mono); font-size: 12.5px; color: var(--muted);
+    display: flex; gap: 10px; align-items: center; border-top: 1px solid var(--border);
+    padding-top: 16px; }
+
+  .prose { max-width: var(--readw); padding-block: 14px 10px; }
+  .prose :global(h2) { font-size: 26px; font-weight: 600; margin: 40px 0 14px; }
+  .prose :global(h3) { font-size: 20px; font-weight: 600; margin: 30px 0 10px; }
+  .prose :global(p) { font-size: 18px; line-height: 1.75; margin: 0 0 18px; }
+  .prose :global(ul), .prose :global(ol) { font-size: 18px; line-height: 1.7; margin: 0 0 20px; padding-left: 24px; }
+  .prose :global(li) { margin-bottom: 8px; }
+  .prose :global(li::marker) { color: var(--accent); }
+  .prose :global(a) { color: var(--accent-ink); text-decoration: underline;
+    text-underline-offset: 2px; text-decoration-thickness: 1px; }
+  .prose :global(strong) { color: var(--fg); }
+  .prose :global(blockquote) { margin: 24px 0; padding: 4px 0 4px 20px;
+    border-left: 3px solid var(--accent); color: var(--muted); font-family: var(--serif);
+    font-size: 19px; font-style: italic; }
+  .prose :global(table) { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 15.5px; }
+  .prose :global(th), .prose :global(td) { text-align: left; padding: 10px 12px;
+    border-bottom: 1px solid var(--border); }
+  .prose :global(th) { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--muted); }
+  .prose :global(hr) { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
+  .faq { max-width: var(--readw); padding-block: 30px 0; }
+  .faq h2 { font-size: 24px; font-weight: 600; margin-bottom: 14px; }
+  .faq details { border-bottom: 1px solid var(--border); padding: 14px 0; }
+  .faq summary { font-family: var(--serif); font-size: 18px; font-weight: 500; cursor: pointer; }
+  .faq p { margin-top: 10px; color: var(--muted); font-size: 16px; line-height: 1.7; }
+
+  .relacionados { max-width: var(--readw); padding-block: 36px 50px; }
+  .relacionados h2 { font-size: 21px; font-weight: 600; margin-bottom: 14px; }
+  .relacionados ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .relacionados a { font-family: var(--serif); font-size: 17px; color: var(--fg); }
+  .relacionados a:hover { color: var(--accent-ink); }
+</style>

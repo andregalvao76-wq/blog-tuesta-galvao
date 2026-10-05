@@ -1,0 +1,40 @@
+---
+import { PILARES } from '../data/pilares';
+import { SITE } from '../data/site';
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <h4>Tuesta &amp; Galvão</h4>
+      <p style="font-size:14px;line-height:1.6;max-width:36ch">
+        Imobiliária de Curitiba especializada em locação, avaliação e intermediação.
+        Conteúdo para quem quer alugar, vender, comprar ou investir na cidade.
+      </p>
+      <p style="margin-top:14px;font-size:14px">
+        <a href={`tel:${SITE.telefone}`}>{SITE.telefoneExibicao}</a><br>
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </p>
+    </div>
+    <div>
+      <h4>Guias</h4>
+      <ul>
+        {PILARES.map((p) => <li><a href={`/guias/${p.slug}/`}>{p.nav}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href={SITE.lps.avalie} target="_blank" rel="noopener">Avaliar meu imóvel</a></li>
+        <li><a href={SITE.lps.anuncie} target="_blank" rel="noopener">Anunciar para alugar</a></li>
+        <li><a href={SITE.lps.indique} target="_blank" rel="noopener">Indique e Ganhe</a></li>
+        <li><a href={SITE.siteUrl} target="_blank" rel="noopener">Buscar imóveis</a></li>
+      </ul>
+    </div>
+    <div class="legal">
+      <span>{SITE.legalName}</span>
+      <span>{SITE.creci}</span>
+      <span>CNPJ {SITE.cnpj}</span>
+      <span>{SITE.endereco.rua}, {SITE.endereco.bairro} — {SITE.endereco.cidade}/{SITE.endereco.uf}</span>
+    </div>
+  </div>
+</footer>

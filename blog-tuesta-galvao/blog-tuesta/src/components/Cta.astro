@@ -1,0 +1,14 @@
+---
+import { SITE } from '../data/site';
+import type { Pilar } from '../data/pilares';
+interface Props { pilar: Pilar; }
+const { pilar } = Astro.props;
+const href = SITE.lps[pilar.lp];
+---
+<div class="cta-box">
+  <div class="cta-text">
+    <h3>{pilar.ctaTitulo}</h3>
+    <p>{pilar.ctaTexto}</p>
+  </div>
+  <a class="btn btn-primary" href={href} target="_blank" rel="noopener">{pilar.ctaBotao} →</a>
+</div>

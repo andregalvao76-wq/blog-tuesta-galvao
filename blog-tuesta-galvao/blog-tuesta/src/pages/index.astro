@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { PILARES } from '../data/pilares';
+import { SITE } from '../data/site';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const destaque = posts[0];
+const recentes = posts.slice(1, 7);
+---
+<BaseLayout
+  title={`${SITE.name} — mercado imobiliário de Curitiba sem enrolação`}
+  description={SITE.description}
+  path="/"
+>
+  <section class="hero-home">
+    <div class="wrap">
+      <p class="eyebrow">Tuesta &amp; Galvão · Curitiba</p>
+      <h1>O mercado imobiliário de Curitiba, explicado por quem opera a cidade.</h1>
+      <p class="lede">
+        Guias diretos sobre alugar, vender, avaliar e investir em imóveis em Curitiba —
+        feitos por corretores, com dado de mercado e sem conversa de vendedor.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href={SITE.lps.avalie} target="_blank" rel="noopener">Avaliar meu imóvel →</a>
+        <a class="btn btn-ghost" href="#guias">Ver os guias</a>
+      </div>
+    </div>
+  </section>
+
+  {destaque && (
+    <section class="wrap" style="padding-block:10px 0">
+      <a class="feature" href={`/blog/${destaque.slug}/`}>
+        <div class="feature-body">
+          <span class="eyebrow">Em destaque</span>
+          <h2>{destaque.data.title}</h2>
+          <p>{destaque.data.description}</p>
+          <span class="feature-link">Ler o guia completo →</span>
+        </div>
+      </a>
+    </section>
+  )}
+
+  <section id="guias" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Comece pelo seu objetivo</h2>
+        <a href="/sobre/">Quem escreve estes guias →</a>
+      </div>
+      <div class="grid-cards">
+        {PILARES.map((p) => (
+          <a class="card pilar-card" href={`/guias/${p.slug}/`}>
+            <span class="tag">Guia</span>
+            <h3>{p.nav}</h3>
+            <p>{p.descricao}</p>
+            <span class="meta">Abrir o guia →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {recentes.length > 0 && (
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head"><h2>Últimos artigos</h2></div>
+        <div class="grid-cards">
+          {recentes.map((post) => (
+            <ArticleCard
+              url={`/blog/${post.slug}/`}
+              title={post.data.title}
+              description={post.data.description}
+              pilar={post.data.pilar}
+              pubDate={post.data.pubDate}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .hero-home { padding-block: 60px 34px; }
+  .hero-home h1 { font-size: clamp(30px, 6vw, 52px); font-weight: 600;
+    letter-spacing: -.015em; max-width: 18ch; margin-top: 16px; }
+  .hero-home .lede { margin-top: 20px; max-width: 58ch; font-size: 18px; color: var(--muted); }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+  .feature { display: block; background: var(--surface); border: 1px solid var(--border);
+    border-left: 5px solid var(--accent); border-radius: 16px; padding: 30px; }
+  .feature:hover { text-decoration: none; border-color: var(--accent); }
+  .feature-body h2 { font-size: clamp(22px, 4vw, 30px); font-weight: 600; margin: 10px 0 10px;
+    color: var(--fg); max-width: 24ch; }
+  .feature-body p { color: var(--muted); max-width: 60ch; font-size: 15.5px; }
+  .feature-link { display: inline-block; margin-top: 16px; color: var(--accent-ink); font-weight: 600; }
+
+  .pilar-card { cursor: pointer; }
+  .pilar-card:hover { text-decoration: none; }
+  .pilar-card h3 { color: var(--fg); }
+</style>

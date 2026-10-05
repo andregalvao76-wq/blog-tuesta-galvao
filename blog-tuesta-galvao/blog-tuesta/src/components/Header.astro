@@ -1,0 +1,40 @@
+---
+import { PILARES } from '../data/pilares';
+import { SITE } from '../data/site';
+---
+<header class="site-header">
+  <div class="bar">
+    <a href="/" class="brand" aria-label="Página inicial do blog">
+      Tuesta <span class="amp">&amp;</span> Galvão <small>Blog</small>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="nav" id="nav">
+      {PILARES.map((p) => <a href={`/guias/${p.slug}/`}>{p.nav}</a>)}
+      <a href="/sobre/">Sobre</a>
+      <a class="cta" href={SITE.lps.avalie} target="_blank" rel="noopener">Avaliar imóvel</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" aria-label="Alternar tema claro ou escuro" title="Tema">◐</button>
+  </div>
+</header>
+<script is:inline>
+  (function () {
+    var b = document.getElementById('menuBtn'), n = document.getElementById('nav');
+    if (b && n) b.addEventListener('click', function () {
+      var open = n.getAttribute('data-open') === 'true';
+      n.setAttribute('data-open', String(!open));
+      b.setAttribute('aria-expanded', String(!open));
+    });
+    var t = document.getElementById('themeBtn');
+    function cur() {
+      var a = document.documentElement.getAttribute('data-theme');
+      if (a) return a;
+      return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    if (t) t.addEventListener('click', function () {
+      var next = cur() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('tg-theme', next); } catch (e) {}
+    });
+    try { var s = localStorage.getItem('tg-theme'); if (s) document.documentElement.setAttribute('data-theme', s); } catch (e) {}
+  })();
+</script>
