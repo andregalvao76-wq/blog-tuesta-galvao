@@ -4,7 +4,7 @@ description: "74% dos brasileiros cortaram despesas para pagar a moradia. Entend
 pilar: "locacao-descomplicada"
 keyword: "quanto comprometer da renda com aluguel"
 lp: "anuncie"
-pubDate: 2026-10-09
+pubDate: 2026-10-07
 author: "Equipe Tuesta & Galvão"
 image: "https://images.pexels.com/photos/6964105/pexels-photo-6964105.jpeg?auto=compress&cs=tinysrgb&w=1200&h=480&fit=crop"
 imageAlt: "Casal revisando contas e documentos em casa, sentados à mesa"
