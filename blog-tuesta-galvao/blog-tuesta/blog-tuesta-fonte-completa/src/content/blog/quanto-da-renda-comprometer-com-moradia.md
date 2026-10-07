@@ -6,8 +6,8 @@ keyword: "quanto comprometer da renda com aluguel"
 lp: "anuncie"
 pubDate: 2026-10-09
 author: "Equipe Tuesta & Galvão"
-image: "https://images.pexels.com/photos/5900228/pexels-photo-5900228.jpeg?auto=compress&cs=tinysrgb&w=1200&h=480&fit=crop"
-imageAlt: "Mãos usando uma calculadora ao lado de recibos e notas de dinheiro sobre a mesa"
+image: "https://images.pexels.com/photos/6964105/pexels-photo-6964105.jpeg?auto=compress&cs=tinysrgb&w=1200&h=480&fit=crop"
+imageAlt: "Casal revisando contas e documentos em casa, sentados à mesa"
 faq:
   - q: "Quanto da renda posso comprometer com aluguel?"
     a: "A referência mais usada é não passar de 30% da renda familiar com o custo total de moradia — e aqui está o detalhe que mais engana: esse teto inclui aluguel, condomínio e IPTU, não só o aluguel. Acima disso, qualquer imprevisto vira risco de atraso."
