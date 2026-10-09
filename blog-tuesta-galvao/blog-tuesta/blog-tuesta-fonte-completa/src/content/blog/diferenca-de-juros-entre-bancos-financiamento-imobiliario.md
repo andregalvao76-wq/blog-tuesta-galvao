@@ -4,7 +4,7 @@ description: "A diferença de juros entre bancos no financiamento imobiliário v
 pilar: "morar-e-investir-em-curitiba"
 keyword: "diferença de juros entre bancos no financiamento imobiliário"
 lp: "avalie"
-pubDate: 2026-10-13
+pubDate: 2026-10-09
 author: "Equipe Tuesta & Galvão"
 image: "https://images.pexels.com/photos/7578882/pexels-photo-7578882.jpeg?auto=compress&cs=tinysrgb&w=1200&h=480&fit=crop"
 imageAlt: "Corretor de imóveis segurando a maquete de uma casa, ao ar livre"
@@ -100,7 +100,7 @@ Não é opinião: o BC divulga mensalmente a taxa média que cada instituição 
 | Bradesco | 12,30% |
 | Banco do Brasil | 14,51% |
 
-Leia as duas tabelas juntas e aparece o detalhe que derruba qualquer "meu banco é o melhor": **a Caixa é a mais barata na linha regulada e a oitava na de mercado. O Itaú é o mais caro na regulada e um dos mais baratos na de mercado.** Não existe banco campeão — existe banco certo para o seu enquadramento.
+Leia as duas tabelas juntas e aparece o detalhe que derruba qualquer "meu banco é o melhor": **a Caixa é a mais barata na linha regulada e cai para a quinta de oito na de mercado. O Itaú é o mais caro na regulada e o quarto mais barato na de mercado. E o Banco do Brasil, quarto mais barato no SFH, é o mais caro das taxas de mercado, com 14,51% ao ano.** Não existe banco campeão — existe banco certo para o seu enquadramento.
 
 ## A diferença real é maior, não menor
 
@@ -127,7 +127,7 @@ Vale também lembrar o que fica fora da parcela e dentro do bolso: ITBI, registr
 
 Não é para parar de negociar o preço. É para **negociar as duas coisas** — e dedicar à segunda pelo menos a mesma energia que você dedica à primeira, porque é nela que está o dinheiro maior.
 
-A conta começa antes do banco: quanto maior a entrada, melhor a taxa e menor o prazo. E a entrada, para quem está trocando de imóvel, sai da venda do atual.
+A conta começa antes do banco: quanto maior a entrada, melhor a taxa e menor o prazo. E a entrada, para quem está trocando de imóvel, sai da venda do atual. Antes de decidir o tamanho da parcela, vale ler também [quanto da renda comprometer com moradia](/blog/quanto-da-renda-comprometer-com-moradia/).
 
 Quer saber quanto vale o seu imóvel hoje para montar a entrada da próxima compra? [Peça uma avaliação de mercado com a Tuesta & Galvão](https://avalie.tuestagalvao.com.br) — feita por quem acompanha preço em Curitiba todo dia.
 
