@@ -126,13 +126,24 @@ const jsonld = { '@context': 'https://schema.org', '@graph': graph };
   <!-- ===== Consentimento de cookies + Medição (GA4 + Meta Pixel) ===== -->
   <!-- Carrega GA4 e o Pixel do Meta SOMENTE após o visitante aceitar (LGPD). -->
   <div id="tgc" hidden aria-live="polite">
-    <p class="tgc-txt">Usamos cookies para medir e melhorar sua experiência no blog.
-      <a href="https://politica.tuestagalvao.com.br" target="_blank" rel="noopener">Política de privacidade</a>.</p>
+    <p class="tgc-txt">Usamos cookies de <strong>medição</strong> do Google e de <strong>publicidade</strong> da Meta
+      para saber quais conteúdos são lidos e medir os resultados dos nossos anúncios.
+      <strong>Nada é carregado antes de você decidir.</strong>
+      <a href="https://politica.tuestagalvao.com.br/aviso-de-cookies.html" target="_blank" rel="noopener">Aviso de Cookies</a>.</p>
+    <details class="tgc-mais">
+      <summary>Saiba mais</summary>
+      <ul>
+        <li><strong>Google Analytics (G-YD1VSBZE4W)</strong> — contar visitas e saber quais artigos são mais lidos. Quem recebe: Google.</li>
+        <li><strong>Pixel da Meta (1076885594957207)</strong> — medir o resultado dos anúncios no Facebook e no Instagram. Quem recebe: Meta Platforms.</li>
+        <li>Os dados vão para empresas sediadas fora do Brasil. Base legal: consentimento (art. 7º, I, da LGPD). Encarregado: contato@galvao.imb.br</li>
+      </ul>
+    </details>
     <div class="tgc-actions">
       <button type="button" id="tgc-no">Recusar</button>
       <button type="button" id="tgc-yes">Aceitar</button>
     </div>
   </div>
+  <p class="tgc-prefs"><button type="button" id="tgc-prefs">Preferências de cookies</button></p>
   <style>
     #tgc{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:600px;margin-inline:auto;
       background:#0f3b3e;color:#f4f1ea;border:1px solid #c9a15a;border-radius:14px;padding:16px 18px;
@@ -144,12 +155,35 @@ const jsonld = { '@context': 'https://schema.org', '@graph': graph };
     #tgc button{cursor:pointer;border-radius:9px;padding:8px 18px;font-weight:600;font-size:14px;
       font-family:inherit;border:1px solid #c9a15a;transition:opacity .15s}
     #tgc button:hover{opacity:.88}
-    #tgc #tgc-no{background:transparent;color:#f4f1ea}
-    #tgc #tgc-yes{background:#c9a15a;color:#0f3b3e}
+    /* Aceitar e Recusar com o mesmo tamanho, peso e contraste.
+       Guia de Cookies da ANPD, pp. 19 e 31-33. */
+    #tgc #tgc-no,#tgc #tgc-yes{background:#c9a15a;color:#0f3b3e}
+    #tgc .tgc-mais{margin-top:10px;font-size:13px;line-height:1.55}
+    #tgc .tgc-mais summary{cursor:pointer;color:#c9a15a;font-weight:600}
+    #tgc .tgc-mais ul{margin:8px 0 0;padding-left:18px}
+    #tgc .tgc-mais li{margin-bottom:6px}
+    .tgc-prefs{text-align:center;margin:0 0 24px}
+    .tgc-prefs button{background:none;border:0;padding:0;cursor:pointer;font:inherit;
+      font-size:13px;color:#0f3b3e;opacity:.7;text-decoration:underline}
+    .tgc-prefs button:hover{opacity:1}
   </style>
   <script is:inline>
     (function () {
-      var KEY = 'tg_consent_v1';
+      var KEY = 'tg_consent_v1';          /* chave antiga, so para migracao */
+      var CHAVE = 'tg_consent_v2';        /* decisao valida nos 4 subdominios */
+      function lerComum() {
+        try { var m = document.cookie.match(/(?:^|;\s*)tg_consent_v2=(accepted|declined)/);
+              if (m) return m[1] === 'accepted' ? 'granted' : 'denied'; } catch (e) {}
+        try { var l = localStorage.getItem(CHAVE);
+              if (l === 'accepted') return 'granted';
+              if (l === 'declined') return 'denied'; } catch (e) {}
+        return null;
+      }
+      function gravarComum(v) {
+        var c = (v === 'granted') ? 'accepted' : 'declined';
+        try { localStorage.setItem(CHAVE, c); } catch (e) {}
+        try { document.cookie = 'tg_consent_v2=' + c + '; path=/; domain=.tuestagalvao.com.br; max-age=15552000; SameSite=Lax; Secure'; } catch (e) {}
+      }
       var GA = 'G-YD1VSBZE4W';
       var PX = '1076885594957207';
       function loadGA() {
@@ -158,7 +192,11 @@ const jsonld = { '@context': 'https://schema.org', '@graph': graph };
         document.head.appendChild(s);
         window.dataLayer = window.dataLayer || [];
         function gtag() { window.dataLayer.push(arguments); }
-        window.gtag = gtag; gtag('js', new Date()); gtag('config', GA);
+        window.gtag = gtag; gtag('js', new Date());
+        /* Decisao de 18/09/2026: medicao sim, personalizacao de anuncio nao. */
+        gtag('set', 'allow_ad_personalization_signals', false);
+        gtag('set', 'ads_data_redaction', true);
+        gtag('config', GA, { anonymize_ip: true });
       }
       function loadPixel() {
         !function (f, b, e, v, n, t, s) {
@@ -171,23 +209,41 @@ const jsonld = { '@context': 'https://schema.org', '@graph': graph };
         window.fbq('init', PX); window.fbq('track', 'PageView');
       }
       function enable() { loadGA(); loadPixel(); }
-      try {
-        var c = localStorage.getItem(KEY);
-        if (c === 'granted') { enable(); return; }
-        if (c === 'denied') { return; }
-      } catch (e) {}
       var el = document.getElementById('tgc');
-      if (!el) return;
-      el.hidden = false;
+      var prefs = document.getElementById('tgc-prefs');
+      var carregou = false;
+      function enableUmaVez() { if (!carregou) { carregou = true; enable(); } }
+
+      var c = lerComum();
+      if (c === null) {
+        /* Chave antiga: a recusa continua valendo; o aceite nao. O banner anterior
+           nao dizia quem recebia os dados, apontava para a Politica em vez do Aviso
+           de Cookies e dava mais destaque ao Aceitar - consentimento colhido assim
+           nao se sustenta (art. 9o, par. 1o, da LGPD). A confirmar com o juridico. */
+        var antigo = null;
+        try { antigo = localStorage.getItem(KEY); } catch (e) {}
+        if (antigo === 'denied') { c = 'denied'; gravarComum('denied'); }
+        else { try { localStorage.removeItem(KEY); } catch (e) {} }
+      }
+
+      if (c === 'granted') { enableUmaVez(); }
+      else if (c !== 'denied' && el) { el.hidden = false; }
+
       var yes = document.getElementById('tgc-yes');
       var no = document.getElementById('tgc-no');
       yes && yes.addEventListener('click', function () {
-        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
-        el.hidden = true; enable();
+        gravarComum('granted');
+        if (el) el.hidden = true;
+        enableUmaVez();
       });
       no && no.addEventListener('click', function () {
-        try { localStorage.setItem(KEY, 'denied'); } catch (e) {}
-        el.hidden = true;
+        gravarComum('denied');
+        if (el) el.hidden = true;
+        /* As tags ja estao na pagina e so saem com recarga. */
+        if (carregou) location.reload();
+      });
+      prefs && prefs.addEventListener('click', function () {
+        if (el) { el.hidden = false; el.scrollIntoView({ behavior: 'smooth', block: 'end' }); }
       });
     })();
   </script>
