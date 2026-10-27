@@ -41,7 +41,11 @@ Durante o temporal, a prioridade é a segurança das pessoas: nada de tentar des
 
 Passada a chuva, **inspecione e fotografe** qualquer dano. O registro com data é o que resolve rápido uma discussão sobre conserto — e é indispensável quando o imóvel é alugado. Se o problema se repete, chame um profissional (telhadista, impermeabilizador) em vez de remediar todo ano.
 
-## De quem é a conta: proprietário ou inquilino?
+## Casas e sobrados: a proteção extra do seguro residencial
+
+A prevenção evita a maior parte dos problemas, mas não todos — um temporal com granizo ou vendaval danifica até o imóvel bem cuidado. Por isso, para quem tem **casa ou sobrado**, o **seguro residencial** deixou de ser luxo e virou proteção básica do patrimônio. Diferente do apartamento, onde o condomínio costuma manter um seguro obrigatório do prédio contra incêndio, a casa fica inteiramente por conta do proprietário. Uma boa apólice reúne a cobertura de **incêndio** — a base de qualquer seguro de imóvel — e as coberturas da estação das chuvas: **vendaval, granizo, queda de árvore e, em muitas apólices, alagamento e danos elétricos causados por raio**. O custo costuma ser baixo perto do prejuízo que evita; o importante é comparar as coberturas e contratar **antes** do pico das chuvas, não depois do estrago.
+
+## Imóvel alugado: de quem é a responsabilidade pelos problemas com a chuva — proprietário ou inquilino?
 
 Essa é a parte que a maioria não sabe — e onde a Tuesta & Galvão faz diferença. A **Lei do Inquilinato (Lei nº 8.245/1991)** divide as responsabilidades com clareza:
 
