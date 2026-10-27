@@ -30,6 +30,8 @@ A lógica é simples: a água precisa ter por onde escoar, e o imóvel precisa e
 - **Calhas e condutores:** limpos e firmes. Folha acumulada é a causa número um de transbordamento e infiltração na parede. Em casa com muitas árvores, a limpeza pode ser mensal.
 - **Telhado e vedações:** telhas quebradas ou fora de posição, rufos soltos, e a impermeabilização de lajes e terraços. É aqui que a água entra sem avisar.
 - **Ralos, grelhas e caimento:** desobstruídos e com a água correndo para longe de portas e garagens — não em direção a elas.
+- **Caixas de gordura e de inspeção:** faça a limpeza periódica. Caixa de gordura saturada e esgoto sem manutenção entopem e, na chuva forte, causam refluxo e transbordamento para dentro do imóvel.
+- **Ligação com a rede pública:** verifique de tempos em tempos os canos que ligam o esgoto e as águas pluviais do imóvel à rede de saneamento e de drenagem da cidade. Tubulação obstruída, trincada ou com raízes é uma das principais causas de refluxo e alagamento justamente nos temporais.
 - **Parte elétrica e bens:** afaste eletrônicos de tomadas em áreas sujeitas a umidade e mantenha documentos e aparelhos em locais elevados.
 - **Áreas externas:** quintais, jardins e corredores que ajudem a água a infiltrar no terreno em vez de empoçar.
 
