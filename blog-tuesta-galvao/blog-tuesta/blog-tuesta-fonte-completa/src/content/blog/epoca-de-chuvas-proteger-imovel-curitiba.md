@@ -6,8 +6,8 @@ keyword: "proteger imóvel na chuva"
 lp: "anuncie"
 pubDate: 2026-10-27
 author: "Equipe Tuesta & Galvão"
-image: "https://images.pexels.com/photos/5135437/pexels-photo-5135437.jpeg?auto=compress&cs=tinysrgb&w=1200&h=480&fit=crop"
-imageAlt: "Gotas de chuva escorrendo pela janela de uma casa"
+image: "/limpeza-calha-chuva.jpg"
+imageAlt: "Homem com capa de chuva limpando a calha de uma casa durante a chuva"
 faq:
 - q: "Infiltração no imóvel alugado: quem paga, proprietário ou inquilino?"
   a: "Depende da origem. Se vem de problema estrutural ou de um defeito que já existia antes da locação — telhado comprometido, falha de impermeabilização, trinca na laje — a conta é do proprietário (art. 22, I e IV da Lei 8.245/91). Se vem de descuido do morador, como um ralo ou calha entupidos por falta de limpeza, o reparo é do inquilino (art. 23, V). Em qualquer caso, o inquilino é obrigado a avisar o proprietário imediatamente (art. 23, IV)."
