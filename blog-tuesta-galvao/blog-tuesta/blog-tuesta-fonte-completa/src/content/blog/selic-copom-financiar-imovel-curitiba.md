@@ -9,12 +9,12 @@ author: "Equipe Tuesta & Galvão"
 image: "https://images.pexels.com/photos/29034871/pexels-photo-29034871.jpeg?auto=compress&cs=tinysrgb&w=1200&h=480&fit=crop"
 imageAlt: "Mão segurando uma chave com chaveiro em formato de casa sobre uma calculadora e notas de dinheiro, simbolizando financiamento imobiliário"
 faq:
-- q: "A Selic caindo significa parcela menor no meu financiamento?"
-a: "Não de forma direta nem imediata. A maior parte das compras residenciais usa o SFH, cujas taxas são fundeadas pela poupança e têm teto — por isso elas sobem e descem mais devagar que a Selic, e não ponto a ponto. A Selic indica a direção dos juros no médio prazo; ela não é a taxa que você assina no banco."
-- q: "Se a Selic está em 13,75%, por que o financiamento imobiliário aparece entre 8% e 12%?"
-a: "Porque o crédito do SFH não vem do mesmo funding de outros empréstimos: ele é lastreado na poupança e tem teto de juros. Por isso, mesmo com a Selic em 13,75%, as taxas médias que o Banco Central publicou em agosto de 2026 no SFH iam de 8,10% na Caixa a 11,87% no Itaú — abaixo da Selic."
-- q: "Devo esperar a decisão de quarta para decidir se compro?"
-a: "A decisão mexe pouco na sua parcela no curtíssimo prazo. O que decide o custo real do seu financiamento é o seu enquadramento (SFH ou mercado), o banco escolhido, o CET e o tamanho da entrada. Esses pontos você já pode trabalhar hoje, independentemente do que o Copom anunciar."
+  - q: "A Selic caindo significa parcela menor no meu financiamento?"
+    a: "Não de forma direta nem imediata. A maior parte das compras residenciais usa o SFH, cujas taxas são fundeadas pela poupança e têm teto — por isso elas sobem e descem mais devagar que a Selic, e não ponto a ponto. A Selic indica a direção dos juros no médio prazo; ela não é a taxa que você assina no banco."
+  - q: "Se a Selic está em 13,75%, por que o financiamento imobiliário aparece entre 8% e 12%?"
+    a: "Porque o crédito do SFH não vem do mesmo funding de outros empréstimos: ele é lastreado na poupança e tem teto de juros. Por isso, mesmo com a Selic em 13,75%, as taxas médias que o Banco Central publicou em agosto de 2026 no SFH iam de 8,10% na Caixa a 11,87% no Itaú — abaixo da Selic."
+  - q: "Devo esperar a decisão de quarta para decidir se compro?"
+    a: "A decisão mexe pouco na sua parcela no curtíssimo prazo. O que decide o custo real do seu financiamento é o seu enquadramento (SFH ou mercado), o banco escolhido, o CET e o tamanho da entrada. Esses pontos você já pode trabalhar hoje, independentemente do que o Copom anunciar."
 ---
 
 Nesta terça e quarta (3 e 4 de novembro), o Comitê de Política Monetária do Banco Central se reúne, e **na quarta à noite sai a nova decisão sobre a Selic**, hoje em **13,75% ao ano**. Previsivelmente, todo mundo que pensa em comprar vai perguntar a mesma coisa: *"é hora de financiar?"*.
