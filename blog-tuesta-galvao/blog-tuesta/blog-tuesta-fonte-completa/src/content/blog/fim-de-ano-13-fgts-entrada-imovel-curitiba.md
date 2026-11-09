@@ -82,7 +82,10 @@ Ou seja: esperar 2027 na expectativa de um juro bem menor é apostar num movimen
 
 Para chegar a dezembro com a compra encaminhada — e não só com o 13º na conta:
 
-- **Confira seu saldo e seu enquadramento no FGTS.** Veja se cumpre os 3 anos de trabalho e as demais regras. É o que define quanto da entrada o FGTS cobre.
+- **Confira seu saldo no FGTS.** É o que define quanto da entrada o FGTS cobre — e dá para consultar em minutos, de graça, pelos canais oficiais:
+    - **Pelo aplicativo FGTS** (o caminho mais rápido): baixe o app oficial da Caixa na [Play Store](https://play.google.com/store/apps/details?id=br.gov.caixa.fgts.trabalhador) ou na App Store → entre com o seu **CPF e a senha de 6 dígitos** → na tela inicial aparece o **saldo total**; toque na conta para ver o extrato detalhado.
+    - **Pelo Internet Banking da Caixa** (se você já é correntista): acesse o [site da Caixa](https://www.caixa.gov.br/beneficios-trabalhador/fgts/extrato-fgts/Paginas/default.aspx), entre no Internet Banking e procure por **"Saldos e Extratos do FGTS"**.
+  Com o número na mão, veja se você cumpre os 3 anos de trabalho e as demais regras de enquadramento.
 - **Some 13º + FGTS + reserva** e chegue a um número real de entrada. Depois peça simulação em pelo menos três bancos, com o mesmo valor e prazo, e compare pelo CET.
 - **Se você está trocando de imóvel**, a maior parte da sua entrada vem da venda do atual. E isso começa sabendo quanto ele vale hoje.
 
