@@ -40,12 +40,12 @@ Em 2026 o programa passou a ter quatro faixas, incluindo uma voltada à classe m
 
 | Faixa | Renda familiar mensal | Teto do imóvel | Juros ao ano | Subsídio |
 |---|---|---|---|---|
-| Faixa 1 | até R$ 3.200 | R$ 210 mil a R$ 275 mil | a partir de ~4% | sim (o maior do programa) |
-| Faixa 2 | R$ 3.200,01 a R$ 5.000 | R$ 210 mil a R$ 275 mil | até ~7% | sim (decrescente) |
-| Faixa 3 | R$ 5.000,01 a R$ 9.600 | até R$ 400 mil | até ~8,16% | não |
+| Faixa 1 | até R$ 3.200 | R$ 210 mil a R$ 275 mil | a partir de ~4% | sim (até 95% do imóvel) |
+| Faixa 2 | R$ 3.200,01 a R$ 5.000 | R$ 210 mil a R$ 275 mil | reduzida (varia por região e FGTS) | sim (até ~R$ 55 mil) |
+| Faixa 3 | R$ 5.000,01 a R$ 9.600 | até R$ 400 mil | ~7,66% a 8,16% | não |
 | Classe Média | R$ 9.600,01 a R$ 13.000 | até R$ 600 mil | até ~10% | não |
 
-A faixa de teto do imóvel (R$ 210 mil a R$ 275 mil) varia conforme o porte do município; para uma capital como Curitiba, vale conferir o valor aplicado na simulação. O prazo de até 420 meses vale para todas as faixas.
+A faixa de teto do imóvel (R$ 210 mil a R$ 275 mil) varia conforme o porte do município — quanto maior a cidade, maior o teto. Curitiba, por ser uma grande capital, fica na ponta mais alta dessa faixa; ainda assim, vale conferir o valor exato aplicado na simulação. O prazo de até 420 meses vale para todas as faixas.
 
 *Fontes: regras do Minha Casa, Minha Vida atualizadas em 2026 pela Portaria MCID nº 333/2026 (de 30/03/2026), que revê os limites de renda do programa. Taxas e tetos finais confirmados pela Caixa.*
 
@@ -63,9 +63,11 @@ Dois pontos que geram dúvida:
 - **Nome negativado:** não é um "não" automático, mas pesa na análise e pode reduzir o valor aprovado. Em regra, também não pode haver restrição em cadastros federais (como o Cadin). Regularizar o CPF antes de dar entrada ajuda.
 - **Comprometimento de renda:** o banco costuma trabalhar com uma parcela em torno de **30% da renda familiar**. É o que define, na prática, quanto você consegue financiar.
 
+Na Faixa 1, a Lei 14.620/2023 dá **prioridade** a alguns perfis: famílias com **mulher como responsável**, com **pessoas com deficiência, idosos ou crianças**, em **situação de risco ou vulnerabilidade**, atingidas por calamidade, em situação de rua, além de povos tradicionais e quilombolas.
+
 ## Como funciona o subsídio e o uso do FGTS
 
-O **subsídio** — aquele "desconto" do governo no valor do imóvel — existe apenas nas **Faixas 1 e 2**, sendo maior na Faixa 1 e decrescente na Faixa 2. O valor exato depende da sua renda, da composição da família e da cidade, e é calculado pelo banco na hora da análise. Nas Faixas 3 e Classe Média não há subsídio, mas os **juros continuam menores** do que num financiamento comum.
+O **subsídio** — aquele "desconto" do governo no valor do imóvel — existe apenas nas **Faixas 1 e 2**. Na **Faixa 1**, ele é o maior do programa e pode cobrir boa parte do imóvel (chegando a até **95% do valor** nos casos de menor renda). Na **Faixa 2**, pode chegar a cerca de **R$ 55 mil**. O valor exato depende da sua renda, da composição da família e da cidade, e é calculado pelo banco na hora da análise. Nas Faixas 3 e Classe Média não há subsídio, mas os **juros continuam menores** do que num financiamento comum.
 
 O **FGTS** é um grande aliado de quem vai comprar o primeiro imóvel. Você pode usar o saldo como **entrada**, para **reduzir a prestação** ou para **amortizar** a dívida ao longo do tempo. Para isso, em regra, é preciso:
 
@@ -113,7 +115,7 @@ Para dar entrada, tenha em mãos:
 - comprovante de residência;
 - extrato do FGTS, se for usar o saldo.
 
-Com esses documentos, a Caixa (ou o Banco do Brasil) faz a análise de crédito e informa a faixa, o subsídio e a parcela que cabem no seu bolso.
+Com esses documentos, a Caixa (ou o Banco do Brasil) faz a análise de crédito e informa a faixa, o subsídio e a parcela que cabem no seu bolso. A análise costuma levar **até 30 dias**; aprovada, é marcada a assinatura do contrato de financiamento.
 
 ## Quer saber quanto de subsídio você tem direito?
 
