@@ -6,8 +6,8 @@ keyword: "contrato de locação em Curitiba"
 lp: "anuncie"
 pubDate: 2026-11-27
 author: "Equipe Tuesta & Galvão"
-image: "https://images.pexels.com/photos/8962685/pexels-photo-8962685.jpeg?auto=compress&cs=tinysrgb&w=1200&h=480&fit=crop"
-imageAlt: "Mãos assinando um contrato de locação sobre a mesa, com caneta e documentos"
+image: "https://images.pexels.com/photos/9870226/pexels-photo-9870226.jpeg?auto=compress&cs=tinysrgb&w=1200&h=480&fit=crop"
+imageAlt: "Mãos revisando um contrato sobre a mesa, apontando um trecho do documento"
 draft: false
 faq:
   - q: "Todo contrato de locação precisa ser por escrito e registrado em cartório?"
